@@ -1,23 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start-up Benchmarker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- navigation bar -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="benchmarker.html">Benchmark</a></li>
-        </ul>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item active">Home</a>
+            <a href="benchmarker.html" class="nav-item">Benchmarks</a>
+        </div>
     </nav>
 
+    <!-- Header Section -->
+    <header class="hero-header">
+        <h1 class="hero-title">Find Benchmark Data for Your Start-up</h1>
+    </header>
 
-    <h1>Find Benchmark Data for Your Start-up</h1>
-    
+    <!-- 2x2 Grid Section -->
+    <main class="content-grid">
+        <!-- Row 1 Left: Text -->
+        <div class="grid-item text-block">
+            <h2>Interactive Financial Modeling</h2>
+            <p>
+                Welcome to The Startup Benchmarker — an interactive space designed to help founders, students, and investors
+                explore how business decisions shape long-term performance. Instead of staring at static spreadsheets or guessing how changes in churn, CAC, or revenue growth will play out, this tool lets you see those dynamics unfold in real time.
+            </p>
+            <p>
+                Adjust assumptions, compare scenarios, and watch key financial outcomes—like revenue, profitability, and runway—respond instantly.
+            </p>
+        </div>
+
+        <!-- Row 1 Right: Image -->
+        <div class="grid-item image-block">
+            <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Dashboard+Preview" alt="Dashboard Preview">
+        </div>
+
+        <!-- Row 2 Left: Image -->
+        <div class="grid-item image-block">
+            <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Data+Visualization" alt="Data Visualization">
+        </div>
+
+        <!-- Row 2 Right: Text -->
+        <div class="grid-item text-block">
+            <h2>Data-Driven Insights</h2>
+            <p>
+                Our platform brings data storytelling and financial modeling together in a clear, intuitive way. Built on top of a multi-year SaaS dataset of 500 simulated companies, The Startup Benchmarker translates complex financial relationships into visuals you can understand at a glance.
+            </p>
+            <p>
+                Whether you're validating a growth strategy, learning how startup economics work, or simply curious about how small changes ripple through a company, this tool gives you a hands-on way to explore all of it.
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>Making startup finance more accessible, interactive, and insightful.</p>
+    </footer>
 </body>
+
 </html>
