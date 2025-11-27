@@ -1,5 +1,3 @@
-# altair_charts.py
-
 import pandas as pd
 import altair as alt
 from simulator import StartupSimulator
