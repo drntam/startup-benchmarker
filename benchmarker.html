@@ -5,26 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start-up Benchmarker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 
 <body>
-    <!-- navigation bar -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="benchmarker.html">Benchmark</a></li>
-        </ul>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="benchmarker.html" class="nav-item active">Benchmark</a>
+        </div>
     </nav>
 
-   <iframe src="https://public.tableau.com/shared/6DQ9NWG5T?:display_count=n&:origin=viz_share_link&:showVizHome=no&:embed=true" width="50%" height="900px"></iframe>
 
-   <iframe src="visualizations/cost_structure_bar_chart.html" width="50%" height="900px"></iframe>
+    <section class="chart-section">
+        <div class="chart-wrapper">
+            <!-- Sort Button -->
+            <div class="chart-controls">
+                <button id="sort-button" class="sort-button">Sort: Low → High</button>
+            </div>
+            <!-- Chart Container -->
+            <div id="chart-container"></div>
+        </div>
+    </section>
 
-   <iframe src="visualizations/financial_trend_line_chart.html" width="50%" height="900px"></iframe>
+    <!-- Other Visualizations -->
+    <section class="iframe-section">
+        <iframe src="https://public.tableau.com/shared/6DQ9NWG5T?:display_count=n&:origin=viz_share_link&:showVizHome=no&:embed=true" width="50%" height="900px"></iframe>
+    </section>
 
-   <iframe src="visualizations/profit_margin_vs_revenue_growth_scatter_plot.html" width="50%" height="900px"></iframe>
+    <section class="iframe-section">
+        <iframe src="visualizations/cost_structure_bar_chart.html" width="50%" height="900px"></iframe>
+    </section>
 
+    <section class="iframe-section">
+        <iframe src="visualizations/financial_trend_line_chart.html" width="50%" height="900px"></iframe>
+    </section>
+
+    <section class="iframe-section">
+        <iframe src="visualizations/profit_margin_vs_revenue_growth_scatter_plot.html" width="50%" height="900px"></iframe>
+    </section>
+
+    <!-- D3.js Visualization Script -->
+    <script src="visualizations/industry_distribution_bar_chart.js"></script>
 </body>
 
 </html>
