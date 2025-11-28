@@ -380,27 +380,27 @@ body {
 
 /* Bar Styles */
 .bar {
-    fill: linear-gradient(135deg, #c0c0c0, #a8a8a8);
-    fill: #a8a8a8;
-    stroke: rgba(192, 192, 192, 0.3);
+    /* fill color set dynamically by D3.js based on industry */
+    stroke: rgba(255, 255, 255, 0.3);
     stroke-width: 1;
     cursor: pointer;
     transition: all 0.3s ease;
+    opacity: 0.9;
 }
 
 .bar:hover,
 .bar.hovered {
-    fill: #c0c0c0;
-    stroke: rgba(224, 224, 224, 0.6);
+    stroke: rgba(255, 255, 255, 0.8);
     stroke-width: 2;
-    filter: drop-shadow(0 0 8px rgba(192, 192, 192, 0.5));
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
 }
 
 .bar.selected {
-    fill: #e0e0e0;
-    stroke: rgba(255, 255, 255, 0.8);
-    stroke-width: 2.5;
-    filter: drop-shadow(0 0 12px rgba(192, 192, 192, 0.8));
+    stroke: rgba(255, 255, 255, 1);
+    stroke-width: 3;
+    opacity: 1;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
 }
 
 /* Tooltip */

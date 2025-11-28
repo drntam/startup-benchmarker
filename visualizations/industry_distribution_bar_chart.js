@@ -30,6 +30,10 @@ const xScale = d3.scaleBand()
 const yScale = d3.scaleLinear()
     .range([height, 0]);
 
+// Color scale for industries (vibrant colors)
+const colorScale = d3.scaleOrdinal()
+    .range(['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#FFD93D', '#A29BFE', '#74B9FF', '#FD79A8', '#FDCB6E']);
+
 // Create axes
 const xAxis = d3.axisBottom(xScale);
 const yAxis = d3.axisLeft(yScale);
@@ -95,6 +99,7 @@ function updateChart(animate = true) {
     // Update scales
     xScale.domain(currentData.map(d => d.industry));
     yScale.domain([0, d3.max(currentData, d => d.count) * 1.1]);
+    colorScale.domain(currentData.map(d => d.industry));
 
     // Update axes with transition
     const transition = d3.transition()
@@ -143,7 +148,8 @@ function updateChart(animate = true) {
         .attr("x", d => xScale(d.industry))
         .attr("y", d => yScale(d.count))
         .attr("width", xScale.bandwidth())
-        .attr("height", d => height - yScale(d.count));
+        .attr("height", d => height - yScale(d.count))
+        .attr("fill", d => colorScale(d.industry));
 
     // Add interaction handlers
     barsMerge

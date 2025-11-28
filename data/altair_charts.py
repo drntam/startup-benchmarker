@@ -3,6 +3,40 @@ import altair as alt
 from simulator import StartupSimulator
 
 
+# ---------- DARK THEME CONFIGURATION ----------
+
+def configure_dark_theme():
+    """
+    Configure Altair charts with dark theme matching the website design.
+    Colors: Dark backgrounds (#121212, #181818) with silver accents (#c0c0c0, #e0e0e0, #a8a8a8)
+    """
+    return {
+        'background': '#121212',
+        'title': {
+            'color': '#ffffff',
+            'fontSize': 18,
+            'fontWeight': 600,
+            'anchor': 'start'
+        },
+        'axis': {
+            'domainColor': 'rgba(192, 192, 192, 0.2)',
+            'gridColor': 'rgba(192, 192, 192, 0.1)',
+            'labelColor': '#b8b8b8',
+            'tickColor': 'rgba(192, 192, 192, 0.2)',
+            'titleColor': '#ffffff',
+            'titleFontWeight': 500
+        },
+        'legend': {
+            'labelColor': '#b8b8b8',
+            'titleColor': '#ffffff',
+            'titleFontWeight': 500
+        },
+        'view': {
+            'stroke': 'rgba(192, 192, 192, 0.2)'
+        }
+    }
+
+
 # ---------- LINE CHART: Overall vs Industry vs Company ----------
 
 def build_line_chart(sim: StartupSimulator):
@@ -75,9 +109,10 @@ def build_line_chart(sim: StartupSimulator):
         "(datum.Source == 'Company' && datum.company == company_param)"
     )
 
+    # Vibrant color scale for data visualization (while keeping dark theme UI)
     color_scale = alt.Scale(
         domain=['Overall Average', 'Industry Average', 'Company'],
-        range=['#1f77b4', 'mediumseagreen', '#FF8C00']
+        range=['#4FC3F7', '#66BB6A', '#FFA726']  # Light blue, green, orange
     )
 
     # Base chart (width/height here, before facet)
@@ -111,6 +146,7 @@ def build_line_chart(sim: StartupSimulator):
         .properties(
             title='Startup Financial Trends: Overall vs Industry vs Company'
         )
+        .configure(**configure_dark_theme())
     )
 
     return chart
@@ -152,25 +188,30 @@ def build_scatter_plot(sim: StartupSimulator):
     # Brush selection to highlight subset of companies
     brush = alt.selection_interval(name='Company brush')
 
+    # Vibrant color scheme for industries (distinct and colorful)
+    industry_colors = alt.Scale(
+        scheme='category20'  # Uses a built-in colorful palette
+    )
+
     scatter = (
         alt.Chart(grouped)
-        .mark_circle(size=90, opacity=0.85)
+        .mark_circle(size=60, opacity=0.7, stroke='#ffffff', strokeWidth=0.5)
         .add_params(brush)
         .encode(
             x=alt.X(
                 'revenue_growth_rate:Q',
                 title='Revenue Growth Rate',
-                axis=alt.Axis(format='%')
+                axis=alt.Axis(format='%'),
             ),
             y=alt.Y(
                 'avg_profit_margin:Q',
                 title='Average Profit Margin',
-                axis=alt.Axis(format='%')
+                axis=alt.Axis(format='%'),
             ),
             color=alt.condition(
                 brush,
-                'industry:N',
-                alt.value('lightgray')
+                alt.Color('industry:N', scale=industry_colors, legend=alt.Legend(title='Industry')),
+                alt.value('#505050')  # Darker gray for unselected
             ),
             tooltip=[
                 'company:N',
@@ -181,9 +222,10 @@ def build_scatter_plot(sim: StartupSimulator):
         )
         .properties(
             title='Profit Margin vs Revenue Growth by Company',
-            width=600,
+            width=1000,
             height=400
         )
+        .configure(**configure_dark_theme())
     )
 
     return scatter
