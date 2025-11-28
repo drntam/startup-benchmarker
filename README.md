@@ -65,6 +65,6 @@ All data is synthetic and programmatically generated, making it realistic and sa
 
 ## 🌐 Project Website  
 
-> *Website link coming soon.*
+> https://drntam.github.io/startup-benchmarker/
 
 ---
