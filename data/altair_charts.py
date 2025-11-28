@@ -136,7 +136,7 @@ def build_line_chart(sim: StartupSimulator):
             color=alt.Color('Source:N', scale=color_scale, title='Series'),
             tooltip=['year', 'Source', 'Metric', 'Value']
         )
-        .properties(width=550, height=150)
+        .properties(width=1500, height=400)
     )
 
     chart = (
