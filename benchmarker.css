@@ -12,13 +12,6 @@
     --shadow-glow: 0 0 20px rgba(192, 192, 192, 0.3);
 }
 
-/* ===== GLOBAL RESET & BASE STYLES ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background-color: var(--bg-primary);
@@ -94,6 +87,11 @@ body {
     max-width: 1800px;
     margin: 2rem auto;
     padding: 2rem 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
 }
 
 .chart-wrapper {
@@ -277,7 +275,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .visualization-wrapper {
@@ -317,93 +315,13 @@ body {
     text-align: center;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-
-/* Mobile */
-@media (max-width: 640px) {
-    .navbar {
-        padding: 1.5rem 1rem 0.5rem;
-    }
-
-    .nav-container {
-        width: 100%;
-        justify-content: center;
-        gap: 0.25rem;
-    }
-
-    .nav-item {
-        padding: 0.65rem 1.5rem;
-        font-size: 0.9rem;
-    }
+/* Description */
+.description {
+    background: transparent;
+    color: #b8b8b8;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    max-width: 650px;
+    margin: 0 auto;
 }
-
-/* Responsive Chart Styles */
-@media (max-width: 968px) {
-    .chart-section {
-        padding: 1.5rem;
-        max-width: 95%;
-    }
-
-    .chart-wrapper {
-        padding: 1.5rem;
-    }
-
-    .visualization-section {
-        padding: 1.5rem;
-        max-width: 95%;
-    }
-
-    .visualization-wrapper {
-        padding: 1.5rem;
-    }
-
-    #chart-container svg {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .iframe-container iframe {
-        min-height: 600px;
-    }
-}
-
-@media (max-width: 640px) {
-    .chart-section {
-        padding: 1rem;
-    }
-
-    .chart-wrapper {
-        padding: 1rem;
-    }
-
-    .visualization-section {
-        padding: 1rem;
-    }
-
-    .visualization-wrapper {
-        padding: 1rem;
-    }
-
-    .chart-title {
-        font-size: 1.2rem;
-    }
-
-    .visualization-title {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .sort-button {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.85rem;
-    }
-
-    .chart-controls {
-        justify-content: center;
-    }
-
-    .iframe-container iframe {
-        height: 500px !important;
-    }
-}
-
