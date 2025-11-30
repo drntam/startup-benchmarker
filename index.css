@@ -10,6 +10,9 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
     --shadow-glow: 0 0 20px rgba(192, 192, 192, 0.3);
+    --link-lightblue: #63a4ff;
+    --link-lightblue-visited: #85caff;
+    --link-lightblue-hover: #3b7dd8;
 }
 
 /* ===== GLOBAL RESET & BASE STYLES ===== */
@@ -17,6 +20,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Global hyperlink styles for visibility on black background */
+a, a:visited, a:active {
+    color: var(--link-lightblue) !important;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+a:visited {
+    color: var(--link-lightblue-visited) !important;
+}
+a:hover, a:focus {
+    color: var(--link-lightblue-hover) !important;
+    text-decoration: underline wavy;
 }
 
 body {
@@ -263,6 +280,58 @@ body {
 .summary-section:focus-within,
 .summary-section:hover {
     box-shadow: 0 0 32px 0 rgba(192,192,192,0.25);
+    border-color: #e0e0e0;
+}
+
+/* ===== RELATED WORKS SECTION ===== */
+.relatedworks-section {
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    padding: 2.5rem 2rem 2.5rem 2rem;
+    border-radius: 24px;
+    border: 2px solid transparent;
+    background-image:
+        linear-gradient(var(--bg-secondary), var(--bg-secondary)),
+        var(--accent-silver);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.relatedworks-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.relatedworks-section h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, #ffffff, #d0d0d0);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.relatedworks-section p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* Related works section links now colored by global a styling */
+
+/* Make related works visually pop on hover/focus (optional) */
+.relatedworks-section:focus-within,
+.relatedworks-section:hover {
+    box-shadow: 0 0 32px 0 rgba(192,192,192,0.20);
     border-color: #e0e0e0;
 }
 
