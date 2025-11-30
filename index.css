@@ -319,6 +319,19 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+.relatedworks-section h3 {
+    font-size: 1.17rem;
+    font-weight: 500;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    color: var(--text-primary);
+    letter-spacing: -0.005em;
+    background: linear-gradient(135deg, #ffffff 60%, #b8b8b8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .relatedworks-section p {
     color: var(--text-secondary);
     font-size: 1rem;
@@ -326,12 +339,29 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Related works section links now colored by global a styling */
+.relatedworks-section ul {
+    padding-left: 1.25em;
+    margin-bottom: 1.3rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    list-style: disc inside;
+}
 
-/* Make related works visually pop on hover/focus (optional) */
+.relatedworks-section ul li {
+    margin-bottom: 0.35em;
+    padding-left: 0.15em;
+}
+
+.relatedworks-section ul:last-child,
+.relatedworks-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* Make related works visually pop on hover/focus */
 .relatedworks-section:focus-within,
 .relatedworks-section:hover {
-    box-shadow: 0 0 32px 0 rgba(192,192,192,0.20);
+    box-shadow: 0 0 32px 0 rgba(192,192,192,0.25);
     border-color: #e0e0e0;
 }
 
