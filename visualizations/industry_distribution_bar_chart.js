@@ -82,6 +82,9 @@ d3.csv("data/saas_financial_market_dataset_with_country.csv").then(data => {
     // Initial sort by count (high to low)
     currentData.sort((a, b) => d3.descending(a.count, b.count));
 
+    // Set color scale domain once (fixed mapping of colors to industries)
+    colorScale.domain(currentData.map(d => d.industry));
+
     // Initial render
     updateChart(false);
 }).catch(error => {
@@ -99,7 +102,6 @@ function updateChart(animate = true) {
     // Update scales
     xScale.domain(currentData.map(d => d.industry));
     yScale.domain([0, d3.max(currentData, d => d.count) * 1.1]);
-    colorScale.domain(currentData.map(d => d.industry));
 
     // Update axes with transition
     const transition = d3.transition()
