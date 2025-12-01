@@ -40,7 +40,8 @@ def configure_dark_theme():
 # ---------- LINE CHART: Overall vs Industry vs Company ----------
 
 def build_line_chart(sim: StartupSimulator):
-    # ----- Overall average -----
+
+    # overall avg
     overall = (
         sim.get_overall_average()
         .melt('year', var_name='Metric', value_name='Value')
@@ -49,7 +50,7 @@ def build_line_chart(sim: StartupSimulator):
     overall['industry'] = ''
     overall['company'] = ''
 
-    # ----- Industry averages for all industries -----
+    # industry avg
     industries = sorted(sim.df['industry'].dropna().unique())
     industry_frames = []
     for ind in industries:
@@ -79,7 +80,6 @@ def build_line_chart(sim: StartupSimulator):
         company_frames.append(tmp)
     company_df = pd.concat(company_frames, ignore_index=True)
 
-    # ----- Combined long-format data -----
     combined = pd.concat([overall, industry_df, company_df], ignore_index=True)
 
     # Clean up metric labels for facet headers
@@ -109,10 +109,10 @@ def build_line_chart(sim: StartupSimulator):
         "(datum.Source == 'Company' && datum.company == company_param)"
     )
 
-    # Vibrant color scale for data visualization (while keeping dark theme UI)
+    # Bright colors for graphs (with dark theme)
     color_scale = alt.Scale(
         domain=['Overall Average', 'Industry Average', 'Company'],
-        range=['#4FC3F7', '#66BB6A', '#FFA726']  # Light blue, green, orange
+        range=['#4FC3F7', '#66BB6A', '#FFA726']
     )
 
     # Base chart (width/height here, before facet)
@@ -130,8 +130,8 @@ def build_line_chart(sim: StartupSimulator):
             y=alt.Y(
                 'Value:Q',
                 title='Amount (USD)',
-                scale=alt.Scale(zero=False),       # zoom in
-                axis=alt.Axis(format='~s')         # 10,000,000 -> 10M
+                scale=alt.Scale(zero=False),    
+                axis=alt.Axis(format='~s')         
             ),
             color=alt.Color('Source:N', scale=color_scale, title='Series'),
             tooltip=['year', 'Source', 'Metric', 'Value']
@@ -162,7 +162,6 @@ def build_scatter_plot(sim: StartupSimulator):
     # Copy full dataset
     df = sim.df.copy()
 
-    # Ensure profit_margin exists (simulator should already add this)
     if 'profit_margin' not in df.columns:
         df['profit_margin'] = df['profit_usd'] / df['revenue_usd']
 
@@ -185,12 +184,11 @@ def build_scatter_plot(sim: StartupSimulator):
         / grouped['revenue_start']
     )
 
-    # Brush selection to highlight subset of companies
     brush = alt.selection_interval(name='Company brush')
 
-    # Vibrant color scheme for industries (distinct and colorful)
+    # Bright colors
     industry_colors = alt.Scale(
-        scheme='category20'  # Uses a built-in colorful palette
+        scheme='category20'
     )
 
     scatter = (
@@ -233,11 +231,7 @@ def build_scatter_plot(sim: StartupSimulator):
 # ---------- EXPORT HELPER ----------
 
 def export_charts(data_path='saas_financial_market_dataset.csv'):
-    """
-    Build charts and save them as standalone HTML files
-    so they can be embedded in index.html.
-    Change data_path if your CSV is in a subfolder (e.g. 'data/...').
-    """
+
     sim = StartupSimulator(data_path)
 
     line_chart = build_line_chart(sim)
